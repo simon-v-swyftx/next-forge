@@ -35,6 +35,13 @@ const internalContentFiles = [
 const allInternalContent = [...internalContentDirs, ...internalContentFiles];
 const program = new Command(packageJson.name);
 
+program.version(
+  packageJson.version,
+  '-v, --version',
+  'Output the current version of create-next-app.'
+);
+
+program.helpOption('-h, --help', 'Display this help message.');
 
 program
   .command('init <name>')
