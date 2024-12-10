@@ -49,14 +49,10 @@ program
 
       log(chalk.green('Creating new next-forge project...'));
       execSync(
-        `${packageManager} create next-app@latest ${projectName} --example "${url}"`,
+        `${packageManager} create next-app@latest ${name.value} --example "${url} --disable-git"`,
         execSyncOpts
       );
       process.chdir(projectDir);
-
-      if (existsSync('.git')) {
-        rmSync('.git', { recursive: true, force: true });
-      }
 
       log(chalk.green('Deleting internal content...'));
       for (const dir of ['.github/workflows', 'docs', 'splash', 'scripts']) {
