@@ -11,7 +11,8 @@ import {
 import { mkdir } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import chalk from 'chalk';
-import { program } from 'commander';
+import { Command } from 'commander';
+import packageJson from './package.json';
 const { log } = console;
 
 const url = 'https://github.com/haydenbleasel/next-forge';
@@ -32,6 +33,8 @@ const internalContentFiles = [
   'license.md',
 ];
 const allInternalContent = [...internalContentDirs, ...internalContentFiles];
+const program = new Command(packageJson.name);
+
 
 program
   .command('init <name>')
